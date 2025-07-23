@@ -31,7 +31,7 @@ services:
       start_period: '10s'
       retries: 3
     ports:
-      - '${LIGHTNING_EXTERNAL_PORT:-${PORT-4000}}:${URL_PORT-4000}'
+      - '${LIGHTNING_EXTERNAL_PORT:-${PORT-4000}}:${PORT-4000}'
   worker:
     image: 'openfn/ws-worker:latest'
     deploy:
@@ -45,7 +45,7 @@ services:
       web:
         condition: service_healthy
         restart: true
-    command: ['pnpm', 'start:prod', '-l', 'ws://web:${URL_PORT-4000}/worker']
+    command: ['pnpm', 'start:prod', '-l', 'ws://web:${PORT-4000}/worker']
     restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
     stop_grace_period: '3s'
     expose:
