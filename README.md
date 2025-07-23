@@ -25,6 +25,13 @@ cp .env.example .env
 Then change all the variables in the `.env` file. Make sure the keys are generated well. Ensure the `SECRET_KEY` is more
 than 64 characters long
 
+## Migrations
+You need to migrate and seed the database. To do this run 
+
+```bash
+docker compose run web /app/bin/migrate
+```
+
 ## Running
 
 To run the app run
